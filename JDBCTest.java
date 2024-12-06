@@ -17,13 +17,14 @@ public class JDBCTest{
         long mobile = s.nextLong();
 
         //Step 1: Load the Driver
-        Class.forName("com.mysql.jdbc.Driver");
-
+        Class.forName("oracle.jdbc.driver.OracleDriver");
+	System.out.println("Driver Loaded successfully");
         //Step 2: Connection Establishment
-        Connection con = DriverManager.getConnection("jdbc:mysql://localhost:3306/kgisl_fourth_batch", "root", "root");
-
+        Connection con = DriverManager.getConnection("jdbc:oracle:thin:@KITEORACLE38191.kgisledu.com:1521:orcl", "scott", "tiger");
+	System.out.println("Connection Established Successfully");
         //Step 3: Create PreparedStatement
-        PreparedStatement ps = con.prepareStatement("insert into student values(?,?,?,?)");
+        //create a table called student_vishnu and then execute this file..
+        PreparedStatement ps = con.prepareStatement("insert into student_vishnu values(?,?,?,?)");
         ps.setInt(1,id);
         ps.setString(2,name);
         ps.setString(3, address);
